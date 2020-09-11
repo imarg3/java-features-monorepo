@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class SearchingMain {
 	public static void main(String[] args) {
+		int numbers[] = {21, 53, 45, 98, 35, 14, 67, 54, 32, 16};
+		int valueToSearch = 45;
+		int indexOfValue = SearchingMain.linearSearch(numbers, valueToSearch);
+		System.out.println("Linear Search :");
+		System.out.println(indexOfValue);
+		
 		try(Scanner sc = new Scanner(System.in)){
 			int[] arr = {11, 22, 33, 44, 55, 66, 77, 88, 99};
 			System.out.print("Enter number to find: ");
@@ -18,8 +24,16 @@ public class SearchingMain {
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		}
+	}
+	
+	public static int linearSearch(int[] numbers, int value) {
 		
+		for(int index = 0; index < numbers.length; index++) {
+			if(numbers[index] == value)
+				return index;
+		}
 		
+		return -1;
 	}
 
 	public static int binarySearch(int[] arr, int key) {
@@ -54,4 +68,22 @@ public class SearchingMain {
 			index = recursiveBinarySearch(arr, mid+1, right, key);
 		return index;
 	}
+	
+	/*
+	 // Tail Recursion
+	 public static int recBinarySearch(int[] arr, int left, int right, int key) {
+		// if invalid partition, return element not found.
+		if(right < left)
+			return -1;
+		// find middle of partition
+		int mid = (left + right) / 2;
+		// if key is same as middle element, return its index
+		if(key == arr[mid])
+			return mid;
+		return key < arr[mid] ? 
+				recBinarySearch(arr, left, mid-1, key): 
+				recBinarySearch(arr, mid+1, right, key);
+	}
+
+	 */
 }
