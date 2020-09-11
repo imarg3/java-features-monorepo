@@ -4,17 +4,22 @@ import java.util.Scanner;
 
 public class SearchingMain {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int[] arr = {11, 22, 33, 44, 55, 66, 77, 88, 99};
-		System.out.print("Enter number to find: ");
-		int key = sc.nextInt();
-		//int index = binarySearch(arr, key);
-		int index = recursiveBinarySearch(arr, 0, arr.length-1, key);
+		try(Scanner sc = new Scanner(System.in)){
+			int[] arr = {11, 22, 33, 44, 55, 66, 77, 88, 99};
+			System.out.print("Enter number to find: ");
+			int key = sc.nextInt();
+			//int index = binarySearch(arr, key);
+			int index = recursiveBinarySearch(arr, 0, arr.length-1, key);
 	
-		if(index == -1)
-			System.out.println("Element not found.");
-		else
-			System.out.println("Element found at index " + index);
+			if(index == -1)
+				System.out.println("Element not found.");
+			else
+				System.out.println("Element found at index " + index);
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		
 	}
 
 	public static int binarySearch(int[] arr, int key) {
