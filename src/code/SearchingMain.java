@@ -10,6 +10,14 @@ public class SearchingMain {
 		System.out.println("Linear Search :");
 		System.out.println(indexOfValue);
 		
+		// Binary Search for String
+		String[] stringArray = {"arpit", "gupta", "java", "python", "technologist"};
+		int stringExists = binarySearchStrings(stringArray, "technologist");
+		if(stringExists == -1)
+			System.out.println("String not found!");
+		else
+			System.out.println("String found at index : " + stringExists);
+		
 		try(Scanner sc = new Scanner(System.in)){
 			int[] arr = {11, 22, 33, 44, 55, 66, 77, 88, 99};
 			System.out.print("Enter number to find: ");
@@ -86,4 +94,34 @@ public class SearchingMain {
 	}
 
 	 */
+	
+	// Binary Search for an array of strings
+	public static int binarySearchStrings(String[] arr, String key) {
+		// Base/Terminating condition
+		int left = 0, right = arr.length - 1;
+		while(left <= right) {
+			int mid = (left + right) / 2;
+			
+			int result = key.compareTo(arr[mid]);
+			
+			// Check if key is present at mid 
+			if(result == 0) {
+				return mid;
+			}
+			
+			// If key greater, ignore left half
+			if(result > 0 ) {
+				left = mid + 1;
+			}
+			// If key smaller, ignore right half
+			else {
+				right = mid - 1;
+			}
+		}
+		
+		return -1;
+	}
+	
+	// Fibonacci Search
+	//	public static 
 }
