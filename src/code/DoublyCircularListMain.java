@@ -5,11 +5,13 @@ class DoublyCircularList {
 		private int data;
 		private Node next;
 		private Node prev;
+		
 		public Node() {
 			data = 0;
 			next = null;
 			prev = null;
 		}
+		
 		public Node(int val) {
 			data = val;
 			next = null;
