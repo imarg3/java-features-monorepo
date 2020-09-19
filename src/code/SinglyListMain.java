@@ -152,12 +152,16 @@ public class SinglyListMain {
 			  switch (choice) { 
 			  	case 1: 
 			  			// Add First
-			  			System.out.print("Enter element: "); val = sc.nextInt(); obj.addFirst(val);
+			  			System.out.print("Enter element: "); 
+			  			val = sc.nextInt(); 
+			  			obj.addFirst(val);
 			  			break; 
 			  	case 2: 
 			  		// Add Last 
 			  		System.out.print("Enter element: "); 
-			  		val = sc.nextInt(); obj.addLast(val); break; 
+			  		val = sc.nextInt(); 
+			  		obj.addLast(val); 
+			  		break; 
 			  	case 3: // Add At Pos
 			  		System.out.print("Enter element: "); 
 			  		val = sc.nextInt();
