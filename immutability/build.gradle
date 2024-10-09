@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.code'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Provided dependencies
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24' // Ensure annotation processor is set for Lombok
+    compileOnly 'com.google.auto.value:auto-value:1.5'
+    annotationProcessor 'com.google.auto.value:auto-value:1.5' // Annotation processor for AutoValue
+    compileOnly 'org.immutables:value:2.8.3'
+    annotationProcessor 'org.immutables:value-processor:2.8.3' // Add this line for Immutables
+
+    // Test dependencies
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+    testImplementation 'org.assertj:assertj-core:3.15.0'
+    testImplementation 'org.eclipse:yasson:1.0.6'
+    testImplementation 'com.fasterxml.jackson.core:jackson-core:2.11.0.rc1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.0.rc1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.11.0.rc1'
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.0.rc1'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    testAnnotationProcessor 'com.google.auto.value:auto-value:1.10.1'
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-parameters', '--enable-preview']
+}
+
+tasks.withType(Test) {
+    jvmArgs '--enable-preview', '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
+}
+
+test {
+    useJUnitPlatform()
+}
